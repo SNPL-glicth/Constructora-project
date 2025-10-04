@@ -1,4 +1,3 @@
-import React from 'react';
 
 // Layout Components
 import Navbar from './components/layout/Navbar';

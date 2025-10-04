@@ -198,7 +198,7 @@ const PartnersCarousel: React.FC = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {STRATEGIC_PARTNERS
                       .slice(slideIndex * cardsPerSlide, (slideIndex + 1) * cardsPerSlide)
-                      .map((partner, cardIndex) => (
+                      .map((partner) => (
                         <PartnerCard 
                           key={partner.id} 
                           partner={partner} 
