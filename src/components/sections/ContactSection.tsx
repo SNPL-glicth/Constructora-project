@@ -55,7 +55,7 @@ const ContactSection: React.FC = () => {
 
   if (isSubmitted) {
     return (
-      <section id="contacto" className="py-20 bg-white">
+      <section id="contacto" className="py-20 bg-white scroll-anchor">
         <div className="container-custom">
           <div className="max-w-2xl mx-auto text-center">
             <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -80,7 +80,7 @@ const ContactSection: React.FC = () => {
   }
 
   return (
-    <section id="contacto" className="py-20 bg-white">
+    <section id="contacto" className="py-20 bg-white scroll-anchor">
       <div className="container-custom">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           

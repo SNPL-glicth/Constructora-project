@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { NAVIGATION_ITEMS, COMPANY_INFO } from '../../constants';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,8 +23,25 @@ const Navbar: React.FC = () => {
   const handleNavClick = (href: string) => {
     setIsMenuOpen(false);
     if (href.startsWith('/#')) {
-      // Para anclas, simplemente navegar con window.location
-      window.location.href = href;
+      const sectionId = href.substring(2); // Quitar '/#'
+      
+      // Si estamos en home, hacer scroll directo
+      if (location.pathname === '/') {
+        const element = document.querySelector(`#${sectionId}`);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        // Si estamos en otra página, navegar a home y luego hacer scroll
+        navigate('/');
+        // Usar setTimeout para asegurar que la navegación se complete antes del scroll
+        setTimeout(() => {
+          const element = document.querySelector(`#${sectionId}`);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 300);
+      }
     }
   };
 
@@ -115,25 +134,38 @@ const Navbar: React.FC = () => {
         isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
       }`}>
         <div className="bg-white border-t border-gray-100 px-4 py-6 space-y-4">
-          {NAVIGATION_ITEMS.map((item) => (
-            <a
-              key={item.id}
-              href={item.href}
-              onClick={(e) => {
-                if (item.href.startsWith('#')) {
-                  e.preventDefault();
-                  handleNavClick(item.href);
-                }
-              }}
-              className="block text-neutral-medium-gray font-medium hover:text-primary transition-colors duration-300 py-2"
-            >
-              {item.label}
-            </a>
-          ))}
+          {NAVIGATION_ITEMS.map((item) => {
+            if (item.href.startsWith('/')) {
+              // Rutas normales (como /servicios)
+              return (
+                <Link
+                  key={item.id}
+                  to={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`block text-gray-700 font-medium hover:text-blue-600 transition-colors duration-300 py-2 ${
+                    location.pathname === item.href ? 'text-blue-600' : ''
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            } else {
+              // Anclas (como /#proyectos)
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => handleNavClick(item.href)}
+                  className="block text-left w-full text-gray-700 font-medium hover:text-blue-600 transition-colors duration-300 py-2"
+                >
+                  {item.label}
+                </button>
+              );
+            }
+          })}
           
           <button
-            onClick={() => handleNavClick('#contacto')}
-            className="btn-primary w-full mt-4"
+            onClick={() => handleNavClick('/#contacto')}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl font-semibold font-heading transition-all duration-300 shadow-md hover:shadow-lg w-full mt-4"
           >
             Contáctanos
           </button>
