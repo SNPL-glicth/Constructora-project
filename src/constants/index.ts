@@ -119,6 +119,26 @@ export const HERO_SLIDES = [
       primary: { text: 'Ver Diseños', href: '#proyectos' },
       secondary: { text: 'Personalizar Proyecto', href: '#contacto' }
     }
+  },
+  {
+    id: 4,
+    title: 'Construimos tu Sueño de Hogar',
+    subtitle: 'Más de 15 años de experiencia en el sector inmobiliario nos respaldan. Tu tranquilidad es nuestra prioridad.',
+    backgroundImage: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+    ctaButtons: {
+      primary: { text: 'Conocer Proyectos', href: '#proyectos' },
+      secondary: { text: 'Agendar Cita', href: '#contacto' }
+    }
+  },
+  {
+    id: 5,
+    title: 'Avance de Obra en Tiempo Real',
+    subtitle: 'Seguimiento detallado de tu inversión. Revisa el progreso de construcción mes a mes con total transparencia.',
+    backgroundImage: 'https://images.unsplash.com/photo-1590725175906-19e2623ab494?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+    ctaButtons: {
+      primary: { text: 'Ver Avance', href: '#proyectos' },
+      secondary: { text: 'Contactar Equipo', href: '#contacto' }
+    }
   }
 ];
 
@@ -126,7 +146,7 @@ export const HERO_SLIDES = [
 export const HERO_CONTENT: HeroSection = {
   title: 'Construyendo el Futuro con Innovación',
   subtitle: 'Desarrollos inmobiliarios de vanguardia que transforman espacios y crean oportunidades de inversión excepcionales.',
-  backgroundImage: '/images/hero-building.jpg',
+  backgroundImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
   ctaButtons: {
     primary: {
       text: 'Ver Proyectos',
@@ -146,7 +166,7 @@ export const FEATURED_PROJECTS: Project[] = [
     name: 'NEXUS Balmora',
     location: 'Zona Rosa, Bogotá',
     description: 'Apartamentos VIS para familias modernas en el exclusivo sector norte de la capital.',
-    image: '/images/projects/torre-nexus.jpg',
+    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10b02?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     status: 'construction',
     area: 15000,
     units: 120,
@@ -164,7 +184,7 @@ export const FEATURED_PROJECTS: Project[] = [
     name: 'NEXUS Ciudad Jardín Sur',
     location: 'Ciudad Jardín, Bogotá',
     description: 'Tu vivienda VIS al sur de la capital con espacios verdes y amenidades exclusivas.',
-    image: '/images/projects/green-valley.jpg',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     status: 'planning',
     area: 25000,
     units: 80,
@@ -182,7 +202,7 @@ export const FEATURED_PROJECTS: Project[] = [
     name: 'NEXUS Costa Azul',
     location: 'Villa Campestre, Barranquilla',
     description: 'Tu próximo apartamento estará en el paraíso, el exclusivo sector costero.',
-    image: '/images/projects/plaza-comercial.jpg',
+    image: 'https://images.unsplash.com/photo-1560448204-e02f11c3a698?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     status: 'completed',
     area: 35000,
     units: 200,
@@ -202,28 +222,28 @@ export const STRATEGIC_PARTNERS: Partner[] = [
   {
     id: '1',
     name: 'Banco Construcción',
-    logo: '/images/partners/banco-construccion.png',
+    logo: '',
     website: 'https://bancoconstruccion.com',
     category: 'financiero'
   },
   {
     id: '2',
     name: 'Arquitectos Modernos',
-    logo: '/images/partners/arquitectos-modernos.png',
+    logo: '',
     website: 'https://arquitectosmodernos.com',
     category: 'diseño'
   },
   {
     id: '3',
     name: 'TechBuild Solutions',
-    logo: '/images/partners/techbuild.png',
+    logo: '',
     website: 'https://techbuild.com',
     category: 'tecnologico'
   },
   {
     id: '4',
     name: 'Constructora Elite',
-    logo: '/images/partners/constructora-elite.png',
+    logo: '',
     website: 'https://constructoraelite.com',
     category: 'constructor'
   }
