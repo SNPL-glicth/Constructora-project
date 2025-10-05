@@ -1,48 +1,34 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Layout Components
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 
-// Section Components
-import HeroCarousel from './components/sections/HeroCarousel';
-import ProjectsShowcase from './components/sections/ProjectsShowcase';
-import PartnersShowcase from './components/sections/PartnersShowcase';
-import ConstructionProgress from './components/sections/ConstructionProgress';
-import ContactSection from './components/sections/ContactSection';
-
-// UI Components
-import FloatingChatbot from './components/ui/FloatingChatbot';
+// Pages
+import HomePage from './pages/HomePage';
+import ServicesPage from './pages/ServicesPage';
+import ProjectsPage from './pages/ProjectsPage';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Fixed Navbar */}
-      <Navbar />
-      
-      {/* Main Content */}
-      <main>
-        {/* Hero Carousel */}
-        <HeroCarousel />
+    <Router>
+      <div className="min-h-screen bg-white">
+        {/* Fixed Navbar */}
+        <Navbar />
         
-        {/* Projects Grid */}
-      <ProjectsShowcase />
+        {/* Main Content */}
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/servicios" element={<ServicesPage />} />
+            <Route path="/proyectos" element={<ProjectsPage />} />
+          </Routes>
+        </main>
         
-        {/* Partners Showcase */}
-      <PartnersShowcase />
-        
-        {/* Construction Progress */}
-        <ConstructionProgress />
-        
-        {/* Contact Section */}
-        <ContactSection />
-      </main>
-      
-      {/* Footer */}
-      <Footer />
-      
-      {/* Floating Chatbot */}
-      <FloatingChatbot />
-    </div>
+        {/* Footer */}
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

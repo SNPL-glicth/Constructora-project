@@ -52,15 +52,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
 
   const statusConfig = getStatusConfig(project.status);
 
-  // Placeholder image basada en el tipo de proyecto
-  const getPlaceholderImage = (projectType: string) => {
-    const images = {
-      'VIS': 'https://images.unsplash.com/photo-1545324418-cc1a3fa10b02?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'Premium': 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'Comercial': 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-    };
-    return images[projectType as keyof typeof images] || images.VIS;
-  };
 
   return (
     <div 
@@ -71,7 +62,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         {/* Image Section */}
         <div className="relative lg:w-2/5 h-64 lg:h-auto overflow-hidden">
           <img 
-            src={getPlaceholderImage(project.projectType || 'VIS')}
+            src={project.image}
             alt={project.name}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
           />

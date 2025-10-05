@@ -55,6 +55,19 @@ interface Project {
     label: string;
   };
   projectType?: 'VIS' | 'Premium' | 'Comercial';
+  testimonial?: {
+    client: string;
+    rating: number;
+    comment: string;
+    avatar?: string;
+  };
+  beforeAfter?: {
+    before: string;
+    after: string;
+  };
+  videoUrl?: string;
+  completedDate?: string;
+  progress?: number;
 }
 
 interface Partner {
@@ -67,10 +80,11 @@ interface Partner {
 
 // Navegación principal
 export const NAVIGATION_ITEMS: NavItem[] = [
-  { id: 'inicio', label: 'Inicio', href: '#inicio' },
-  { id: 'proyectos', label: 'Proyectos', href: '#proyectos' },
-  { id: 'aliados', label: 'Aliados', href: '#aliados' },
-  { id: 'contacto', label: 'Contacto', href: '#contacto' },
+  { id: 'inicio', label: 'Inicio', href: '/' },
+  { id: 'servicios', label: 'Servicios', href: '/servicios' },
+  { id: 'proyectos', label: 'Proyectos', href: '/proyectos' },
+  { id: 'aliados', label: 'Aliados', href: '/#aliados' },
+  { id: 'contacto', label: 'Contacto', href: '/#contacto' },
 ];
 
 // Información de la empresa
@@ -104,7 +118,7 @@ export const HERO_SLIDES = [
     id: 2,
     title: 'Inversiones Inteligentes en Bienes Raíces',
     subtitle: 'Oportunidades únicas de inversión con retornos garantizados y la seguridad que solo los mejores proyectos pueden ofrecer.',
-    backgroundImage: 'https://images.unsplash.com/photo-1560448204-e02f11c3a698?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+    backgroundImage: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80',
     ctaButtons: {
       primary: { text: 'Calcular ROI', href: '#proyectos' },
       secondary: { text: 'Hablar con Experto', href: '#contacto' }
@@ -114,7 +128,7 @@ export const HERO_SLIDES = [
     id: 3,
     title: 'Espacios que Inspiran Vida',
     subtitle: 'Diseños arquitectónicos únicos que combinan funcionalidad, estética y sostenibilidad para crear hogares excepcionales.',
-    backgroundImage: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10b02?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+    backgroundImage: 'https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-4.0.3&auto=format&fit=crop&w=2067&q=80',
     ctaButtons: {
       primary: { text: 'Ver Diseños', href: '#proyectos' },
       secondary: { text: 'Personalizar Proyecto', href: '#contacto' }
@@ -124,7 +138,7 @@ export const HERO_SLIDES = [
     id: 4,
     title: 'Construimos tu Sueño de Hogar',
     subtitle: 'Más de 15 años de experiencia en el sector inmobiliario nos respaldan. Tu tranquilidad es nuestra prioridad.',
-    backgroundImage: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+    backgroundImage: 'https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
     ctaButtons: {
       primary: { text: 'Conocer Proyectos', href: '#proyectos' },
       secondary: { text: 'Agendar Cita', href: '#contacto' }
@@ -134,7 +148,7 @@ export const HERO_SLIDES = [
     id: 5,
     title: 'Avance de Obra en Tiempo Real',
     subtitle: 'Seguimiento detallado de tu inversión. Revisa el progreso de construcción mes a mes con total transparencia.',
-    backgroundImage: 'https://images.unsplash.com/photo-1590725175906-19e2623ab494?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+    backgroundImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
     ctaButtons: {
       primary: { text: 'Ver Avance', href: '#proyectos' },
       secondary: { text: 'Contactar Equipo', href: '#contacto' }
@@ -166,7 +180,7 @@ export const FEATURED_PROJECTS: Project[] = [
     name: 'NEXUS Balmora',
     location: 'Zona Rosa, Bogotá',
     description: 'Apartamentos VIS para familias modernas en el exclusivo sector norte de la capital.',
-    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10b02?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     status: 'construction',
     area: 15000,
     units: 120,
@@ -177,14 +191,25 @@ export const FEATURED_PROJECTS: Project[] = [
       usd: 'USD 99.583',
       label: 'Desde'
     },
-    projectType: 'VIS'
+    projectType: 'VIS',
+    gallery: [
+      'https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+    ],
+    progress: 75,
+    testimonial: {
+      client: 'María González',
+      rating: 5,
+      comment: 'Excelente calidad de construcción y acabados. El equipo fue muy profesional durante todo el proceso.',
+    }
   },
   {
     id: '2',
     name: 'NEXUS Ciudad Jardín Sur',
     location: 'Ciudad Jardín, Bogotá',
     description: 'Tu vivienda VIS al sur de la capital con espacios verdes y amenidades exclusivas.',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     status: 'planning',
     area: 25000,
     units: 80,
@@ -195,14 +220,19 @@ export const FEATURED_PROJECTS: Project[] = [
       usd: 'USD 85.097',
       label: 'Desde'
     },
-    projectType: 'VIS'
+    projectType: 'VIS',
+    gallery: [
+      'https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+    ],
+    progress: 25
   },
   {
     id: '3',
     name: 'NEXUS Costa Azul',
     location: 'Villa Campestre, Barranquilla',
     description: 'Tu próximo apartamento estará en el paraíso, el exclusivo sector costero.',
-    image: 'https://images.unsplash.com/photo-1560448204-e02f11c3a698?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     status: 'completed',
     area: 35000,
     units: 200,
@@ -213,7 +243,57 @@ export const FEATURED_PROJECTS: Project[] = [
       usd: 'USD 125.530',
       label: 'Desde'
     },
+    projectType: 'Premium',
+    gallery: [
+      'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+    ],
+    completedDate: '2024-12-15',
+    testimonial: {
+      client: 'Carlos Mendoza',
+      rating: 5,
+      comment: 'Superó todas nuestras expectativas. La vista al mar es espectacular y los acabados de primera calidad.',
+    },
+    beforeAfter: {
+      before: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+      after: 'https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+    }
+  },
+  {
+    id: '4',
+    name: 'NEXUS Chapinero Heights',
+    location: 'Chapinero, Bogotá',
+    description: 'Exclusivos apartamentos premium con vista panorámica de la ciudad y acabados de lujo.',
+    image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    status: 'planning',
+    area: 28000,
+    units: 150,
+    deliveryDate: '2026-08-20',
+    features: ['Spa', 'Helipuerto', 'Wine Bar', 'Concierge'],
+    price: {
+      cop: '$ 650.890.400',
+      usd: 'USD 168.254',
+      label: 'Desde'
+    },
     projectType: 'Premium'
+  },
+  {
+    id: '5',
+    name: 'NEXUS Business Plaza',
+    location: 'Zona Financiera, Medellín',
+    description: 'Centro empresarial moderno con oficinas inteligentes y espacios de coworking premium.',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    status: 'construction',
+    area: 45000,
+    units: 200,
+    deliveryDate: '2025-12-15',
+    features: ['Smart Offices', 'Auditorio', 'Terraza', 'Parking Inteligente'],
+    price: {
+      cop: '$ 420.750.800',
+      usd: 'USD 108.773',
+      label: 'Desde'
+    },
+    projectType: 'Comercial'
   }
 ];
 

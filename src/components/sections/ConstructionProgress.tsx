@@ -13,7 +13,7 @@ const ConstructionProgress: React.FC = () => {
             {/* Image Section */}
             <div className="relative lg:w-1/2 h-64 lg:h-auto overflow-hidden">
               <img 
-                src="https://images.unsplash.com/photo-1590725175906-19e2623ab494?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
                 alt="Avance de construcción"
                 className="w-full h-full object-cover"
               />

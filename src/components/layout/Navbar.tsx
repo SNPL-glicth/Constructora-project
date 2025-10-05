@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { NAVIGATION_ITEMS, COMPANY_INFO } from '../../constants';
 
@@ -19,11 +20,9 @@ const Navbar: React.FC = () => {
 
   const handleNavClick = (href: string) => {
     setIsMenuOpen(false);
-    if (href.startsWith('#')) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+    if (href.startsWith('/#')) {
+      // Para anclas, simplemente navegar con window.location
+      window.location.href = href;
     }
   };
 
@@ -60,27 +59,38 @@ const Navbar: React.FC = () => {
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center space-x-8">
-          {NAVIGATION_ITEMS.map((item) => (
-            <a
-              key={item.id}
-              href={item.href}
-              onClick={(e) => {
-                if (item.href.startsWith('#')) {
-                  e.preventDefault();
-                  handleNavClick(item.href);
-                }
-              }}
-              className="text-gray-700 font-medium hover:text-primary transition-colors duration-300 relative group"
-            >
-              {item.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-            </a>
-          ))}
+          {NAVIGATION_ITEMS.map((item) => {
+            if (item.href.startsWith('/')) {
+              // Rutas normales (como /servicios)
+              return (
+                <Link
+                  key={item.id}
+                  to={item.href}
+                  className="text-gray-700 font-medium hover:text-blue-600 transition-colors duration-300 relative group"
+                >
+                  {item.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                </Link>
+              );
+            } else {
+              // Anclas (como /#proyectos)
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => handleNavClick(item.href)}
+                  className="text-gray-700 font-medium hover:text-blue-600 transition-colors duration-300 relative group"
+                >
+                  {item.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                </button>
+              );
+            }
+          })}
           
           {/* Contact Button */}
           <button
-            onClick={() => handleNavClick('#contacto')}
-            className="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-2xl font-semibold font-heading transition-all duration-300 shadow-md hover:shadow-lg"
+            onClick={() => handleNavClick('/#contacto')}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl font-semibold font-heading transition-all duration-300 shadow-md hover:shadow-lg"
           >
             Contáctanos
           </button>
