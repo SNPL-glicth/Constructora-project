@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { ArrowRightIcon } from '@heroicons/react/24/solid';
 import { HERO_SLIDES } from '../../constants';
@@ -6,6 +7,7 @@ import { HERO_SLIDES } from '../../constants';
 const HeroCarousel: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const navigate = useNavigate();
 
   // Auto-play functionality
   useEffect(() => {
@@ -31,12 +33,14 @@ const HeroCarousel: React.FC = () => {
   };
 
   const handleCtaClick = (href: string) => {
-    if (href.startsWith('#')) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else {
+    if (href.startsWith('/') && !href.startsWith('/#')) {
+      // Ruta normal (como /servicios, /proyectos)
+      navigate(href);
+    } else if (href.startsWith('/#')) {
+      // Ancla en home - usar React Router con hash
+      navigate(href);
+    } else if (href.startsWith('http')) {
+      // Enlaces externos
       window.open(href, '_blank');
     }
   };

@@ -110,8 +110,8 @@ export const HERO_SLIDES = [
     subtitle: 'Desarrollos inmobiliarios de vanguardia que transforman espacios y crean oportunidades de inversión excepcionales.',
     backgroundImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
     ctaButtons: {
-      primary: { text: 'Ver Proyectos', href: '#proyectos' },
-      secondary: { text: 'Convertirme en Aliado', href: '#contacto' }
+      primary: { text: 'Ver Proyectos', href: '/proyectos' },
+      secondary: { text: 'Convertirme en Aliado', href: '/#contacto' }
     }
   },
   {
@@ -120,8 +120,8 @@ export const HERO_SLIDES = [
     subtitle: 'Oportunidades únicas de inversión con retornos garantizados y la seguridad que solo los mejores proyectos pueden ofrecer.',
     backgroundImage: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80',
     ctaButtons: {
-      primary: { text: 'Calcular ROI', href: '#proyectos' },
-      secondary: { text: 'Hablar con Experto', href: '#contacto' }
+      primary: { text: 'Calcular ROI', href: '/proyectos' },
+      secondary: { text: 'Hablar con Experto', href: '/#contacto' }
     }
   },
   {
@@ -130,8 +130,8 @@ export const HERO_SLIDES = [
     subtitle: 'Diseños arquitectónicos únicos que combinan funcionalidad, estética y sostenibilidad para crear hogares excepcionales.',
     backgroundImage: 'https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-4.0.3&auto=format&fit=crop&w=2067&q=80',
     ctaButtons: {
-      primary: { text: 'Ver Diseños', href: '#proyectos' },
-      secondary: { text: 'Personalizar Proyecto', href: '#contacto' }
+      primary: { text: 'Ver Diseños', href: '/proyectos' },
+      secondary: { text: 'Personalizar Proyecto', href: '/#contacto' }
     }
   },
   {
@@ -140,8 +140,8 @@ export const HERO_SLIDES = [
     subtitle: 'Más de 15 años de experiencia en el sector inmobiliario nos respaldan. Tu tranquilidad es nuestra prioridad.',
     backgroundImage: 'https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
     ctaButtons: {
-      primary: { text: 'Conocer Proyectos', href: '#proyectos' },
-      secondary: { text: 'Agendar Cita', href: '#contacto' }
+      primary: { text: 'Conocer Proyectos', href: '/proyectos' },
+      secondary: { text: 'Agendar Cita', href: '/#contacto' }
     }
   },
   {
@@ -150,8 +150,8 @@ export const HERO_SLIDES = [
     subtitle: 'Seguimiento detallado de tu inversión. Revisa el progreso de construcción mes a mes con total transparencia.',
     backgroundImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
     ctaButtons: {
-      primary: { text: 'Ver Avance', href: '#proyectos' },
-      secondary: { text: 'Contactar Equipo', href: '#contacto' }
+      primary: { text: 'Ver Avance', href: '/proyectos' },
+      secondary: { text: 'Contactar Equipo', href: '/#contacto' }
     }
   }
 ];
@@ -164,11 +164,11 @@ export const HERO_CONTENT: HeroSection = {
   ctaButtons: {
     primary: {
       text: 'Ver Proyectos',
-      href: '#proyectos'
+      href: '/proyectos'
     },
     secondary: {
       text: 'Convertirme en Aliado',
-      href: '#contacto'
+      href: '/#contacto'
     }
   }
 };

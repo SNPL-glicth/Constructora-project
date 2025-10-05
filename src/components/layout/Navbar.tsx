@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { NAVIGATION_ITEMS, COMPANY_INFO } from '../../constants';
+import { useActiveNavigation } from '../../hooks/useActiveNavigation';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
+  const { isActive } = useActiveNavigation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,25 +24,8 @@ const Navbar: React.FC = () => {
   const handleNavClick = (href: string) => {
     setIsMenuOpen(false);
     if (href.startsWith('/#')) {
-      const sectionId = href.substring(2); // Quitar '/#'
-      
-      // Si estamos en home, hacer scroll directo
-      if (location.pathname === '/') {
-        const element = document.querySelector(`#${sectionId}`);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      } else {
-        // Si estamos en otra página, navegar a home y luego hacer scroll
-        navigate('/');
-        // Usar setTimeout para asegurar que la navegación se complete antes del scroll
-        setTimeout(() => {
-          const element = document.querySelector(`#${sectionId}`);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-          }
-        }, 300);
-      }
+      // Usar React Router para navegar con hash
+      navigate(href);
     }
   };
 
@@ -85,10 +69,18 @@ const Navbar: React.FC = () => {
                 <Link
                   key={item.id}
                   to={item.href}
-                  className="text-gray-700 font-medium hover:text-blue-600 transition-colors duration-300 relative group"
+                  className={`font-medium transition-colors duration-300 relative group ${
+                    isActive(item.href)
+                      ? 'text-blue-600' 
+                      : 'text-gray-700 hover:text-blue-600'
+                  }`}
                 >
                   {item.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-blue-600 transition-all duration-300 ${
+                    isActive(item.href)
+                      ? 'w-full' 
+                      : 'w-0 group-hover:w-full'
+                  }`}></span>
                 </Link>
               );
             } else {
@@ -97,10 +89,18 @@ const Navbar: React.FC = () => {
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.href)}
-                  className="text-gray-700 font-medium hover:text-blue-600 transition-colors duration-300 relative group"
+                  className={`font-medium transition-colors duration-300 relative group ${
+                    isActive(item.href)
+                      ? 'text-blue-600' 
+                      : 'text-gray-700 hover:text-blue-600'
+                  }`}
                 >
                   {item.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-blue-600 transition-all duration-300 ${
+                    isActive(item.href)
+                      ? 'w-full' 
+                      : 'w-0 group-hover:w-full'
+                  }`}></span>
                 </button>
               );
             }
@@ -142,8 +142,10 @@ const Navbar: React.FC = () => {
                   key={item.id}
                   to={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`block text-gray-700 font-medium hover:text-blue-600 transition-colors duration-300 py-2 ${
-                    location.pathname === item.href ? 'text-blue-600' : ''
+                  className={`block font-medium transition-colors duration-300 py-2 px-3 rounded-md ${
+                    isActive(item.href)
+                      ? 'text-blue-600 bg-blue-50' 
+                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
                   }`}
                 >
                   {item.label}
@@ -155,7 +157,11 @@ const Navbar: React.FC = () => {
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.href)}
-                  className="block text-left w-full text-gray-700 font-medium hover:text-blue-600 transition-colors duration-300 py-2"
+                  className={`block text-left w-full font-medium transition-colors duration-300 py-2 px-3 rounded-md ${
+                    isActive(item.href)
+                      ? 'text-blue-600 bg-blue-50'
+                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                  }`}
                 >
                   {item.label}
                 </button>
